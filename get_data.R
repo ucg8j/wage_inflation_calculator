@@ -22,28 +22,5 @@ rates <- rba.site                   %>%
     rbind(c(2017,.02),                  # add future CPI rates from Treasury webpage
           c(2018,.0225),                # see README for source and rationale for not webscraping
           c(2019,.0225))            %>%   
-    arrange(year)
-
-# add treasury projections for life of agreement
-treasury.site <- read_html("http://www.treasury.gov.au/PublicationsAndMedia/Publications/2016/PEFO-2016/HTML/Economic-outlook")
-future.rates <- treasury.site               %>%
-    html_nodes("table")                     %>% 
-    `[[`(1)                                 %>% # select first table
-    html_table()                            #%>%
-
-# other table fiddling
-colnames(future.rates)  <- future.rates[1, ]    # set first row as colnames
-future.rates            <- future.rates[-1, ]   # delete first row
-future.rates            <- subset(future.rates, future.rates[,1] == 'Consumer price index') # only CPI
-future.rates           <- future.rates[, -c(1,2,3,4,7)]    # drop columns
-
-# What do I have now?
-# > future.rates
-#   2016-17 2017-18 2018-19 2019-20
-# 5       2   2 1/4   2 1/2   2 1/2
-
-# Those fractions are annoying... *** ENTERING MANUAL MODE ***
-rates <- rbind(rates, c(2017,.02), c(2018,.0225), c(2019,.0225))
-
-
-write_csv(rates,'cpi.csv')
+    arrange(year)                   %>%
+    write_csv('cpi.csv')
