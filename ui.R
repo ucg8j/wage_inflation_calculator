@@ -4,12 +4,12 @@ fluidPage(
     
     sidebarLayout(
         sidebarPanel(
-            numericInput("num", label = "Enter your wage", value = 75000),
+            numericInput("wage", label = "Enter your wage", value = 75000),
             helpText('Source: RBA.gov.au')
         ),
     
     mainPanel(
-        plotOutput(outputId = "main_plot"
+        plotlyOutput("main_plot"
                    # , height = "300px"
                    )
         

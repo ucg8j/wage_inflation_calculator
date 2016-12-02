@@ -3,20 +3,26 @@ library(shiny)  # web framework
 library(plotly) # interactive graphs
 
 # read data
-rates <- read_csv('cpi.csv')
+rates <- read.csv('cpi.csv')
 
-# what's the avg of the 3 years?
-avg.cpi <- mean(rates$rate)
-
-# return vector of adjusted wages
+# return vector of adjusted wages TODO simplify
 adj_wage <- function(wage, rates, inflate){
 
     wages <- vector()
+    wages <- c(wages, wage) # provide start value
     
     for (i in rates){
-        w       <- ifelse(inflate, wage - wage*i, wage + wage*i)
-        wages   <- c(wages,w)
+        
+        # take the last wage value
+        wage <- as.numeric(wages[length(wages)])
+        
+        if (inflate){
+            w <- wage + (wage*i)
+        } else {
+            w <- wage - (wage*i)
+        }
+        wages <- c(wages,w)
     }
     
-    return(wages)
+    return(wages[-1])
 }
