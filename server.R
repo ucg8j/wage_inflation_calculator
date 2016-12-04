@@ -25,10 +25,10 @@ shinyServer(function(input, output) {
              select(inflate.wages, discount.wages)
          
          # text output
-         c("If your wage kept up with inflation, today it would be ",
-           '$', as.character(round(wage.today[1,1],2)),
-           "If it hasn't kept up with inflation, your wage in 2013 terms is now ",
-           '$', as.character(round(wage.today[1,2],2))
+         paste0("If your wage kept up with inflation, today it would be ",
+           '$', format(round(wage.today[1,1],2), big.mark = ","),
+           ". If it hasn't kept up with inflation, your wage in 2013 terms is now ",
+           '$', format(round(wage.today[1,2],2), big.mark = ",")
            )
      })
     
