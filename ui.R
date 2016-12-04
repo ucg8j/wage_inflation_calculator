@@ -11,7 +11,9 @@ fluidPage(
     mainPanel(
         plotlyOutput("main_plot"
                    # , height = "300px"
-                   )
+                   ),
+        textOutput('inflate_txt'), br(),
+        tableOutput("time_series")
         
         # Display this only if the density is shown
 #         conditionalPanel(condition = "input.density == true",
