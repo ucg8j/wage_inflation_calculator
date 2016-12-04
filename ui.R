@@ -9,18 +9,9 @@ fluidPage(
         ),
     
     mainPanel(
-        plotlyOutput("main_plot"
-                   # , height = "300px"
-                   ),
+        plotlyOutput("main_plot"),
         textOutput('inflate_txt'), br(),
         tableOutput("time_series")
-        
-        # Display this only if the density is shown
-#         conditionalPanel(condition = "input.density == true",
-#                          sliderInput(inputId = "bw_adjust",
-#                                      label = "Bandwidth adjustment:",
-#                                      min = 0.2, max = 2, value = 1, step = 0.2)
-#         )
     )
     
 ))
