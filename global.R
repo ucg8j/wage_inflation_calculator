@@ -1,6 +1,7 @@
 library(readr)  # fast I/O
 library(shiny)  # web framework
 library(plotly) # interactive graphs
+library(scales) # dataTable formatting
 
 # read data
 rates <- read_csv('cpi.csv')
