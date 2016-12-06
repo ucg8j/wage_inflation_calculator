@@ -3,12 +3,12 @@ fluidPage(
     tags$head(includeScript("google-analytics.js")),
     
     # Application title
-    titlePanel("Are your wages keeping up?"),
+    titlePanel("Are your wages keeping up with inflation?"),
     
     # User Input
     sidebarLayout(
         sidebarPanel(
-            numericInput("wage", label = "Enter your wage", value = 75000),
+            numericInput("wage", label = "Enter your base annual salary", value = 75000),
             helpText('Data sourced from', 
                      a("RBA.gov.au", href='http://www.rba.gov.au/inflation/measures-cpi.html'),
                      '+', 
