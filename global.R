@@ -3,7 +3,7 @@ library(shiny)  # web framework
 library(plotly) # interactive graphs
 
 # read data
-rates <- read.csv('cpi.csv')
+rates <- read_csv('cpi.csv')
 
 # return vector of adjusted wages TODO simplify
 adj_wage <- function(wage, rates, inflate){
