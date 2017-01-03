@@ -6,12 +6,13 @@ library(scales) # dataTable formatting
 # read data
 rates <- read_csv('cpi.csv')
 
-# return vector of adjusted wages TODO simplify
+# return vector of adjusted wages
 adj_wage <- function(wage, rates, inflate){
 
-    wages <- vector()
+    wages <- vector()       # initialise vector
     wages <- c(wages, wage) # provide start value
     
+    # for each inflation rate calculate inflated/deflated amount
     for (i in rates){
         
         # take the last wage value
